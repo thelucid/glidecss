@@ -14,20 +14,20 @@ At the heart of Glide is the ability to define a free-form `theme`.
 @import "glidecss/base";
 
 @include theme((
-	palette: (
-  	primary: (
-  		1: #fff,
-  		2: #eee,
-  		3: #888
+  palette: (
+    primary: (
+      1: #fff,
+      2: #eee,
+      3: #888
     ),
-  	accent: (
+    accent: (
       1: #e70,
-  		2: #f80,
-  		3: #f91
+      2: #f80,
+      3: #f91
     )
   ),
   spacing: (
-  	1: .25rem,
+    1: .25rem,
     2: .5rem,
     3: .75rem
   )
@@ -42,7 +42,7 @@ This is a basic theme which can be accessed by using the `theme` function.
 .button {
   padding: theme(spacing, 3);
   color: theme(palette, primary, 1);
-	background: theme(palette, accent, 2);
+  background: theme(palette, accent, 2);
   
   &:hover {
     background: theme(palette, accent, 3);
@@ -72,9 +72,9 @@ A default property can be defined within a set of properties, via the `DEFAULT` 
 
 ```scss
 @include theme((
-	radius: (
-  	DEFAULT: .25rem,
-  	large: .5rem
+  radius: (
+    DEFAULT: .25rem,
+    large: .5rem
   )
 ));
 ```
@@ -84,8 +84,8 @@ The default is returned when requesting the parent property, so the following ar
 ##### SCSS
 
 ```scss
-border-radius: theme(radius);        		// <- .25rem
-border-radius: theme(radius, DEFAULT); 	// <- .25rem
+border-radius: theme(radius);            // <- .25rem
+border-radius: theme(radius, DEFAULT);   // <- .25rem
 ```
 
 #### Overrides
@@ -97,14 +97,14 @@ The `theme` mixin performs a non-destrutive merge — in a similar fashion to th
 ```scss
 @include theme((
   radius: (
-  	large: .5rem
+    large: .5rem
   )
 ));
 
 @include theme((
   radius: (
-  	small: .125rem,
-  	large: 1rem
+    small: .125rem,
+    large: 1rem
   )
 ));
 ```
@@ -116,8 +116,8 @@ This is equivilent to the following, as the original `large` property is preserv
 ```scss
 @include theme((
   radius: (
-  	small: .125rem,
-  	large: .5rem
+    small: .125rem,
+    large: .5rem
   )
 ));
 ```
@@ -133,7 +133,7 @@ Global theme properties are powerful when combined with component theme properti
 ```scss
 @include theme((
   menu: (
-	  background: theme(palette, primary, 2)
+    background: theme(palette, primary, 2)
     padding: theme(spacing, 2),
     item: (
       display: inline-block
@@ -209,14 +209,14 @@ We can make a component responsive by defining properties that trigger for vario
 ```scss
 @include theme((
   menu: (
-  	background: theme(palette, primary, 2),
+    background: theme(palette, primary, 2),
     padding: (
-    	DEFAULT: theme(spacing, 2),
+      DEFAULT: theme(spacing, 2),
       lg: theme(spacing, 3)
     ),
     item: (
       display: (
-  			DEFAULT: block,
+        DEFAULT: block,
         md: inline-block
       )
     )
@@ -305,7 +305,7 @@ To configure the screen sizes available, just add a `screens` property to the th
 ```scss
 @include theme((
   screens: (
-	  custom: 800px
+    custom: 800px
   )
 ));
 
@@ -367,10 +367,10 @@ To easily set properties across modes, we can make use of `modes` to look them u
 ```scss
 @include theme((
   menu: (
-  	background: (
-  		DEFAULT: theme(palette, primary, 2),
+    background: (
+      DEFAULT: theme(palette, primary, 2),
       dark: theme(palette, primary, 3)
-  	)
+    )
   )
 ));
 
@@ -431,15 +431,15 @@ To configure the modes available, just add a `modes` property to the theme in th
 ```scss
 @include theme((
   modes: (
-	  dimmed: '.<mode> <selector>'
+    dimmed: '.<mode> <selector>'
   ),
   palette: (
-  	primary: (
-  		1: (
-  			DEFAULT: #fff,
-  			dimmed: #444
+    primary: (
+      1: (
+        DEFAULT: #fff,
+        dimmed: #444
       )
-  	)
+    )
   )
 ));
 
@@ -625,8 +625,8 @@ To configure the variants available, just add a `variants` property to the `them
 ```scss
 @include theme((
   variants: (
-	  first: '<class>:<variant>-child',
-	  last: '<class>:<variant>-child'
+    first: '<class>:<variant>-child',
+    last: '<class>:<variant>-child'
   )
 ));
 
@@ -701,9 +701,9 @@ body {
 
 ```css
 @media (min-width: 768px) {
-	body {
-	  padding: 1rem;
-	}
+  body {
+    padding: 1rem;
+  }
 }
 ```
 
@@ -721,9 +721,9 @@ The default modes are show below.
 @include "glidecss/defaults/modes";
 
 body {
-	@include mode(dark) {
- 		background: black; 
-	}
+  @include mode(dark) {
+     background: black; 
+  }
 }
 ```
 
@@ -731,7 +731,7 @@ body {
 
 ```css
 .dark body {
-	background: black;
+  background: black;
 }
 ```
 
@@ -812,12 +812,12 @@ body {
 ```css
 body {
   color: #222426;
-	background: #fff;
+  background: #fff;
 }
 
 .dark body {
   color: #fff;
-	background: #222426;
+  background: #222426;
 }
 ```
 
@@ -856,7 +856,7 @@ The default spacing values are accessed with `theme(spacing, <name>)`.
 
 ```css
 .button {
-	padding: 1rem;
+  padding: 1rem;
 }
 ```
 
@@ -995,8 +995,8 @@ Note that if you want to override any defaults, the overrides should be declared
 ```scss
 @include theme((
   spacing: (
-  	0: .125rem,
-  	1: .5rem
+    0: .125rem,
+    1: .5rem
   )
 ));
 
@@ -1012,8 +1012,8 @@ The non-destrutive merge is a super powerful tool when overriding component prop
 ```scss
 @include theme((
   card: (
-  	color: palette(primary, 1),
-  	background: palette(accent)
+    color: palette(primary, 1),
+    background: palette(accent)
   )
 ));
 
@@ -1040,7 +1040,7 @@ npm install -D glidecss
 
 ```scss
 @import "glidecss/base";
-@import "glidecss/reset"; 		// <- optional
+@import "glidecss/reset";     // <- optional
 @import "glidecss/defaults";  // <- optional
 ```
 
