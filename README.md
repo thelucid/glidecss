@@ -775,7 +775,7 @@ The default variants are show below.
 
 #### Palette
 
-The default palette has a single `primary` color with the following shades, accessed with `theme(palette, primary, <shade>, <mode>)`. Add futher palette colors, such as `accent`.
+The default palette has a single `primary` color with the following shades, accessed with `theme(palette, primary, <shade>, <mode>)`. Tweak as need and add futher palette colors, such as `accent`.
 
 | Shade | Default mode        | Dark mode            |
 | ----- | ------------------- | -------------------- |
