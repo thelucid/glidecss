@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+$_theme: () !default;
+
+@function fetch($path...) {
+  $value: $_theme;
+
+  @each $segment in $path {
+    @if not map-has-key($value, $segment) { @return null; }
+    $value: map-get($value, $segment);
+  }
+
+  @return $value;
+}
+
+@function theme($path...) {
+  $value: fetch($path...);
+  @if $value == null { @warn "Can't find #{$path}"; }
+
+  @return if(
+    type-of($value) == map and map-has-key($value, DEFAULT),
+    map-get($value, DEFAULT),
+    $value
+  );
+}
+
+@mixin theme($map) {
+  $_theme: _defaults($_theme, $map) !global;
+}
+
+@mixin screen($name) {
+  @media(min-width: fetch(screens, $name)) { @content; }
+}
+
+@mixin screens($path...) {
+  @each $name, $value in _lookup($path...) {
+    @if $name == DEFAULT {
+      @content($value);
+    } @else {
+      @include screen($name) { @content($value); }
+    }
+  }
+}
+
+@mixin mode($name) {
+  $selector: ();
+
+  @each $complex in selector-parse(&) {
+    $selector: append(
+      $selector,
+      _interpolate(fetch(modes, $name), (mode: $name, selector: $complex)),
+      comma
+    );
+  }
+
+  @at-root #{$selector} { @content; }
+}
+
+@mixin modes($path...) {
+  @each $name, $value in _lookup($path...) {
+    @if $name == DEFAULT {
+      @content($value);
+    } @else {
+      @include mode($name) { @content($value); }
+    }
+  }
+}
+
+@mixin variant($name, $template: '<class>') {
+  $selector: _selector($name, &, $template, (
+    class: ".<variants>#{$name}\\:<basename>",
+    variant: $name
+  ));
+
+  @at-root #{$selector} { @content; }
+}
+
+@mixin variants($names...) {
+  @content;
+
+  @each $name in $names {
+    $config: fetch(variants, $name) or fetch(variants, DEFAULT);
+
+    @if $config == null { @error "No '#{$name}' variant found." }
+
+    @if type-of($config) == string {
+      $config: (type: selector, template: $config);
+    }
+
+    $type: map-get($config, type);
+
+    @if $type == selector {
+      @include variant($name, map-get($config, template)) { @content; }
+    } @else if $type == screen {
+      @each $screen, $value in fetch(screens) {
+        @include variant($screen) {
+          @include screen($screen) { @content; }
+        }
+      }
+    } @else if $type == mode {
+      @each $mode, $value in fetch(modes) {
+        @include variant($mode) {
+          @include mode($mode) { @content; }
+        }
+      }
+    }
+  }
+}
+
+@mixin modifier($name, $template: "<class>-<modifier>") {
+  $selector: _selector($name, &, $template, (
+    class: ".<variants><basename>",
+    modifier: $name
+  ));
+
+  @at-root #{$selector} { @content; }
+}
+
+@mixin modifiers($path...) {
+  @each $name, $value in _lookup($path...) {
+    @include modifier($name) { @content($value); }
+  }
+}
+
+@function tint($color, $percentage) {
+  @return mix(#fff, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(#000, $color, $percentage);
+}
+
+@function _defaults($defaults, $map) {
+  $result: $defaults;
+
+  @each $key, $val in $map {
+    @if not(map-has-key($result, $key)) {
+      $result: map-merge($result, ($key: $val));
+    } @else if type-of(map-get($result, $key)) == map and type-of($val) == map {
+      $result: map-merge($result, ($key: _defaults(map-get($result, $key), $val)));
+    }
+  }
+
+  @return $result;
+}
+
+@function _lookup($arg, $args...) {
+  @return if(type-of($arg) == map, $arg, fetch($arg, $args...));
+}
+
+@function _selector($name, $original, $template, $tokens) {
+  @return if(
+    $name == DEFAULT,
+    $original,
+    _update($original, _interpolate($template, $tokens))
+  );
+}
+
+@function _update($selector, $template) {
+  $result: ();
+
+  @each $complex in selector-parse($selector) {
+    $result: append($result, _spaced($complex, $template), comma);
+  }
+
+  @return $result;
+}
+
+@function _spaced($complex, $template) {
+  $spaced: ();
+  $at: _rindex($complex);
+
+  @for $index from 1 through length($complex) {
+    $compound: nth($complex, $index);
+
+    $spaced: append(
+      $spaced,
+      if($index == $at, _unified($compound, $template), $compound)
+    );
+  }
+
+  @return $spaced;
+}
+
+@function _rindex($complex) {
+  $at: length($complex);
+
+  @while $at >= 1 and str-index(nth($complex, $at) , '.') != 1 {
+    $at: $at - 1;
+  }
+
+  @return $at;
+}
+
+@function _unified($compound, $template) {
+  $unified: null;
+
+  @each $simple in simple-selectors($compound) {
+    $modified: if(
+      str-index($simple, '.') == 1,
+      _interpolate($template, _extract($simple)),
+      $simple
+    );
+
+    $unified: if($unified, selector-append($unified, $modified), $modified);
+  }
+
+  @return $unified;
+}
+
+@function _interpolate($string, $tokens) {
+  @each $name, $value in $tokens {
+    $token: '<#{$name}>';
+    $index: str-index($string, $token);
+
+    @if $index {
+      $head: str-slice($string, 1, $index - 1);
+      $tail: str-slice($string, $index + str-length($token));
+      $string: $head + $value + $tail;
+    }
+  }
+
+  @return $string;
+}
+
+@function _extract($simple) {
+  $variants: '';
+  $basename: str-slice($simple, str-index($simple, '.') + 1);
+  $index: 1;
+  $separator: '\\:';
+
+  @while ($index) {
+    $variants: $variants + str-slice($basename, 1, $index - 1);
+    $basename: str-slice($basename, $index);
+    $index: str-index($basename, $separator);
+    $index: if($index, $index + str-length($separator), $index);
+  }
+
+  @return (variants: $variants, basename: $basename);
+}

@@ -1,0 +1,9 @@
+@include theme((
+  font: (
+    leading: (
+      DEFAULT: 1.5,
+      tight: 1.25,
+      loose: 1.75
+    )
+  )
+));

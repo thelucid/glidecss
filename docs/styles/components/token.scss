@@ -1,0 +1,109 @@
+@include theme((
+  token: (
+    function: (
+      color: fetch(palette, accent, dark)
+    ),
+    punctuation: (
+      color: fetch(palette, primary, 9, dark)
+    ),
+    comment: (
+      color: fetch(palette, primary, 7, dark)
+    ),
+    operator: (
+      color: fetch(palette, primary, 9, dark)
+    ),
+    string: (
+      color: fetch(palette, primary, 9, dark)
+    ),
+    value: (
+      color: fetch(palette, primary, 9, dark)
+    ),
+    regex: (
+      color: fetch(palette, primary, 9, dark),
+    ),
+    keyword: (
+      color: fetch(palette, secondary, dark)
+    ),
+    property: (
+      color: fetch(palette, tertiary, dark)
+    )
+  )
+));
+
+/* purgecss start ignore */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: theme(token, comment, color);
+}
+
+.token.punctuation {
+  color: theme(token, punctuation, color);
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: theme(token, property, color);
+}
+
+.token.boolean,
+.token.number {
+  color: theme(token, value, color);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: theme(token, string, color);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: theme(token, operator, color);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: theme(token, function, color);
+}
+
+.token.keyword {
+  color: theme(token, keyword, color);
+}
+
+.token.regex,
+.token.important {
+  color: theme(token, regex, color);
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* purgecss end ignore */

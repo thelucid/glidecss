@@ -1,0 +1,79 @@
+@include theme((
+  menu: (
+    link: (
+      h2: (
+        color: fetch(palette, primary, 9)
+      ),
+      normal: (
+        color: fetch(palette, primary, 8)
+      ),
+      hover: (
+        color: fetch(palette, primary, 9)
+      ),
+      current: (
+        color: fetch(palette, accent)
+      )
+    ),
+    spacing: (
+      DEFAULT: theme(spacing, 4),
+      md: theme(spacing, 6),
+      lg: theme(spacing, 8)
+    )
+  )
+));
+.menu {
+  @include screen(md) {
+    grid-row: 1 / span 2;
+  }
+}
+.menu__nav {
+  @include screens(menu, spacing) using ($value) {
+    padding: $value;
+  }
+
+  @include screen(md) {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+.menu__list {
+  @include screens(menu, spacing) using ($value) {
+    margin-bottom: $value;
+  }
+}
+.menu__link {
+  display: block;
+  font-size: theme(font, size, 2);
+  padding: theme(spacing, 2);
+
+  @include modes(menu, link, normal, color) using ($color) {
+    color: $color;
+  }
+
+  &:hover {
+    @include modes(menu, link, hover, color) using ($color) {
+      color: $color;
+    }
+  }
+
+  &.is-current {
+    @include modes(menu, link, current, color) using ($color) {
+      color: $color;
+    }
+  }
+}
+.menu__link--h2 {
+  font-size: theme(font, size, 1);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: theme(spacing, 3);
+
+  @include modes(menu, link, h2, color) using ($color) {
+    color: $color !important;
+  }
+}

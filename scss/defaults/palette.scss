@@ -1,0 +1,42 @@
+@include theme((
+  palette: (
+    primary: (
+      1: (
+        DEFAULT: tint(#222426, 0%),
+        dark: shade(#222426, 100%)
+      ),
+      2: (
+        DEFAULT: tint(#222426, 50%),
+        dark: shade(#222426, 50%)
+      ),
+      3: (
+        DEFAULT: tint(#222426, 70%),
+        dark: shade(#222426, 30%)
+      ),
+      4: (
+        DEFAULT: tint(#222426, 90%),
+        dark: shade(#222426, 10%)
+      ),
+      5: (
+        DEFAULT: tint(#222426, 100%),
+        dark: tint(#222426, 0%),
+      ),
+      6: (
+        DEFAULT: tint(#222426, 90%),
+        dark: tint(#222426, 10%)
+      ),
+      7: (
+        DEFAULT: tint(#222426, 70%),
+        dark: tint(#222426, 30%)
+      ),
+      8: (
+        DEFAULT: tint(#222426, 50%),
+        dark: tint(#222426, 50%)
+      ),
+      9: (
+        DEFAULT: tint(#222426, 0%),
+        dark: tint(#222426, 100%)
+      )
+    )
+  )
+));

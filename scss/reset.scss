@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* purgecss start ignore */
+
+@import "modern-normalize";
+
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre,fieldset,ol,ul {
+  margin: 0;
+  padding: 0;
+}
+button {
+  background-color: transparent;
+  background-image: none;
+}
+ol,ul {
+  list-style: none;
+}
+html {
+  line-height: 1.5;
+}
+body {
+  font-family: inherit;
+  line-height: inherit;
+}
+*,::after,::before {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+hr {
+  border-top-width: 1px;
+}
+img {
+  border-style: solid;
+}
+textarea {
+  resize: vertical;
+}
+input::-moz-placeholder,textarea::-moz-placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+input::placeholder,textarea::placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+[role=button],button {
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+button,input,optgroup,select,textarea {
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+}
+code,kbd,pre,samp {
+  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+audio,canvas,embed,iframe,img,object,svg,video {
+  display: block;
+  vertical-align: middle;
+}
+img,video {
+  max-width: 100%;
+  height: auto;
+}
+[hidden] {
+  display: none;
+}
+
+/* purgecss end ignore */

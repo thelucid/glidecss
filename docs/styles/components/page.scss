@@ -1,0 +1,28 @@
+.page {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  font-family: theme(font, family, sans);
+  font-size: theme(font, size, 3);
+  line-height: theme(font, leading, loose);
+  max-width: 67rem;
+  margin: 0 auto;
+
+  @include screen(md) {
+    grid-template-columns: minmax(220px, 25%) minmax(0, 47rem);
+    grid-template-rows: auto;
+    justify-content: space-around;
+  }
+
+  @include modes(palette, primary, 8) using ($color) {
+    color: $color;
+  }
+
+  @include modes(palette, primary, 5) using ($color) {
+    background: $color;
+  }
+}

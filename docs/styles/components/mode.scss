@@ -1,0 +1,90 @@
+@include theme((
+  mode: (
+    background: fetch(palette, primary, 4),
+    item: (
+      font-size: fetch(font, size, 1),
+      padding: fetch(spacing, 2),
+      color: fetch(palette, primary, 9)
+    ),
+    light: (
+      opacity: (
+        DEFAULT: 1,
+        dark: 0.5
+      )
+    ),
+    dark: (
+      opacity: (
+        DEFAULT: 0.5,
+        dark: 1
+      )
+    ),
+    current: (
+      background: (
+        DEFAULT: theme(palette, primary, 5),
+        dark: theme(palette, primary, 6, dark)
+      ),
+      translate-x: (
+        DEFAULT: 0%,
+        dark: 100%
+      ),
+      shadow-blur: theme(spacing, 3)
+    )
+  )
+));
+
+.mode {
+  position: relative;
+  display: flex;
+  border-radius: 100px;
+  width: 100%;
+  justify-content: space-between;
+  user-select: none;
+
+  @include modes(mode, background) using ($color) {
+    background: $color;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border-radius: 100px;
+    box-shadow: 0 1px theme(mode, current, shadow-blur) rgba(black, .15);
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    @include modes(mode, current, background) using ($color) {
+      background: $color;
+    }
+
+    @include modes(mode, current, translate-x) using ($percentage) {
+      transform: translateX($percentage);
+    }
+  }
+}
+.mode__light,
+.mode__dark {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: theme(mode, item, padding);
+  cursor: pointer;
+
+  @include screens(mode, item, font-size) using ($size) {
+    font-size: $size;
+  }
+
+  @include modes(mode, item, color) using ($color) {
+    color: $color;
+  }
+}
+.mode__light {
+  @include modes(mode, light, opacity) using ($opacity) {
+    opacity: $opacity;
+  }
+}
+.mode__dark {
+  @include modes(mode, dark, opacity) using ($opacity) {
+    opacity: $opacity;
+  }
+}

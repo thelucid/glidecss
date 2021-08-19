@@ -1,0 +1,11 @@
+@include theme((
+  variants: (
+    DEFAULT: '<class>:<variant>',
+    screen: (
+      type: screen
+    ),
+    mode: (
+      type: mode
+    )
+  )
+));

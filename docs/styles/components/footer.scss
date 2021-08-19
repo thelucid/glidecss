@@ -1,0 +1,17 @@
+@include theme((
+  footer: (
+    spacing: (
+      DEFAULT: theme(spacing, 4),
+      md: theme(spacing, 6),
+      lg: theme(spacing, 8)
+    )
+  )
+));
+
+.footer {
+  @include screens(footer, spacing) using ($value) {
+    padding-left: $value;
+    padding-right: $value;
+    padding-bottom: $value;
+  }
+}

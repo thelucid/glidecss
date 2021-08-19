@@ -1,0 +1,35 @@
+@include theme((
+  font: (
+    size: (
+      1: (
+        DEFAULT: 0.75rem,   // 12px
+      ),
+      2: (
+        DEFAULT: 0.875rem,  // 14px
+      ),
+      3: (
+        DEFAULT: 1rem,      // 16px
+      ),
+      4: (
+        DEFAULT: 1.125rem,  // 18px
+        lg: 1.25rem         // 20px
+      ),
+      5: (
+        DEFAULT: 1.375rem,  // 22px
+        lg: 1.5rem          // 24px
+      ),
+      6: (
+        DEFAULT: 1.625rem,  // 26px
+        lg: 2rem            // 32px
+      ),
+      7: (
+        DEFAULT: 2rem,      // 32px
+        lg: 2.5rem          // 40px
+      ),
+      8: (
+        DEFAULT: 2.5rem,    // 40px
+        lg: 3rem            // 48px
+      )
+    )
+  )
+));

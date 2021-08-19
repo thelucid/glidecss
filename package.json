@@ -1,0 +1,17 @@
+{
+  "name": "glidecss",
+  "version": "0.9.0",
+  "files": [
+    "scss/*.scss"
+  ],
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0",
+    "sass": "^1.36.0"
+  }
+}

@@ -1,0 +1,202 @@
+@include theme((
+  prose: (
+    code: (
+      background: (
+        DEFAULT: theme(palette, primary, 9),
+        dark: theme(palette, primary, 4, dark)
+      ),
+      foreground: fetch(palette, accent)
+    ),
+    pre: (
+      code: (
+        background: (
+          DEFAULT: theme(palette, primary, 9),
+          dark: theme(palette, primary, 4, dark)
+        ),
+        foreground: (
+          DEFAULT: theme(palette, primary, 7),
+          dark: theme(palette, primary, 8, dark)
+        )
+      )
+    ),
+    table: (
+      cell: (
+        border: fetch(palette, primary, 6),
+        padding: (DEFAULT: theme(spacing, 1), lg: theme(spacing, 2))
+      ),
+      header: (
+        color: fetch(palette, primary, 9)
+      ),
+      margin-bottom: theme(spacing, 3)
+    )
+  )
+));
+
+/* purgecss start ignore */
+
+.prose {
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
+
+    @include modes(palette, primary, 9) using ($color) {
+      color: $color;
+    }
+  }
+  h2, h3 {
+    &:target::before {
+      content: "";
+      display: block;
+      height: theme(spacing, 6);
+      margin-top: - theme(spacing, 6);
+    }
+  }
+  h1 {
+    line-height: theme(font, leading, tight);
+    margin-bottom: theme(spacing, 4);
+    padding-bottom: theme(spacing, 3);
+
+    @include screens(font, size, 7) using ($size) {
+      font-size: $size;
+    }
+
+    @include modes(palette, primary, 7) using ($color) {
+      box-shadow: inset 0 -1px $color;
+    }
+  }
+  h2 {
+    line-height: theme(font, leading, tight);
+    margin-top: theme(spacing, 6);
+    margin-bottom: theme(spacing, 6);
+    padding-bottom: theme(spacing, 3);
+
+    @include screens(font, size, 6) using ($size) {
+      font-size: $size;
+    }
+
+    @include modes(palette, primary, 7) using ($color) {
+      box-shadow: inset 0 -1px $color;
+    }
+  }
+  h3 {
+    line-height: theme(font, leading, tight);
+    margin-top: theme(spacing, 6);
+    margin-bottom: theme(spacing, 4);
+
+    @include screens(font, size, 5) using ($size) {
+      font-size: $size;
+    }
+  }
+  h4 {
+    margin-top: theme(spacing, 6);
+    margin-bottom: theme(spacing, 4);
+
+    @include screens(font, size, 4) using ($size) {
+      font-size: $size;
+    }
+  }
+  h5 {
+    margin-top: theme(spacing, 4);
+    margin-bottom: theme(spacing, 3);
+
+    @include screens(font, size, 3) using ($size) {
+      font-size: $size;
+    }
+  }
+
+  p {
+    margin-bottom: theme(spacing, 4);
+
+    @include screens(font, size, 3) using ($size) {
+      font-size: $size;
+    }
+  }
+
+  // Code
+  code, pre {
+  	font-family: theme(font, family, mono);
+  	line-height: theme(font, leading);
+
+  	-moz-tab-size: 2;
+  	-o-tab-size: 2;
+  	tab-size: 2;
+
+  	-webkit-hyphens: none;
+  	-moz-hyphens: none;
+  	-ms-hyphens: none;
+  	hyphens: none;
+  }
+
+  code {
+    display: inline-block;
+  	padding: .125rem theme(spacing, 1) + .125rem;
+    border-radius: theme(radius);
+  	white-space: normal;
+    font-weight: theme(font, weight, medium);
+
+    @include screens(font, size, 2) using ($size) {
+      font-size: $size;
+    }
+
+    @include modes(prose, code, background) using ($color) {
+      background: $color;
+    }
+
+    @include modes(prose, code, foreground) using ($color) {
+      color: $color;
+    }
+  }
+
+  pre code {
+    display: block;
+    white-space: pre;
+    border-radius: theme(radius);
+    padding: theme(spacing, 4);
+    margin-bottom: theme(spacing, 4);
+  	overflow-x: auto;
+
+    @include screens(font, size, 2) using ($size) {
+      font-size: $size;
+    }
+
+    @include modes(prose, pre, code, background) using ($color) {
+      background: $color;
+    }
+
+    @include modes(prose, pre, code, foreground) using ($color) {
+      color: $color;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: theme(prose, table, margin-bottom);
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+
+      @include screens(prose, table, cell, padding) using ($padding) {
+        padding-top: $padding;
+        padding-right: $padding;
+        padding-bottom: $padding;
+      }
+
+      @include modes(prose, table, cell, border) using ($color) {
+        box-shadow: inset 0 -1px $color;
+      }
+
+      tr:last-child {
+        box-shadow: none;
+      }
+    }
+    th {
+      font-weight: theme(font, weight, bold);
+
+      @include modes(prose, table, header, color) using ($color) {
+        color: $color;
+      }
+    }
+  }
+}
+
+/* purgecss end ignore */
