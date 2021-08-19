@@ -1,7 +1,9 @@
-@import "../scss/base";
-@import "../scss/reset";
+@import "../base";
+@import "../reset";
 
 @import "./styles/theme";
+@import "../defaults";
+
 @import "./styles/elements";
 
 @import "./styles/components/footer";

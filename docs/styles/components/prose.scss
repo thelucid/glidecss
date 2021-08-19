@@ -2,7 +2,7 @@
   prose: (
     code: (
       background: (
-        DEFAULT: theme(palette, primary, 9),
+        DEFAULT: theme(palette, primary, 6),
         dark: theme(palette, primary, 4, dark)
       ),
       foreground: fetch(palette, accent)
