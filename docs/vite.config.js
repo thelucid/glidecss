@@ -50,6 +50,6 @@ const readmePlugin = () => {
 }
 
 export default {
-  // root: path.join(__dirname, 'docs'),
+  base: '', // <- relative paths
   plugins: [readmePlugin()]
 };
