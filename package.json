@@ -1,8 +1,15 @@
 {
   "name": "glidecss",
-  "version": "0.9.0",
+  "author": {
+    "name": "Jamie Hill",
+    "email": "jamie@thelucid.com"
+  },
+  "description": "A tiny component-first CSS framework for Sass; with a zero footprint by default. Build solid design systems with a set of simple tools, and the power to generate utility classes where appropriate.",
+  "license": "MIT",
+  "homepage": "http://thelucid.com",
+  "version": "0.9.1",
   "files": [
-    "scss/*.scss"
+    "scss/**/*.scss"
   ],
   "scripts": {
     "test": "jest --verbose"
