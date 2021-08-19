@@ -43,7 +43,7 @@ jobs:
           node-version: '16.3.0'
 
       - name: Yarn
-        run: cd docs && yarn install && yarn build
+        run: cd docs && yarn install && yarn build && cd ../
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
