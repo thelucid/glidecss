@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:        
+      - v*.*.*
+
+jobs:
+  test:
+    name: Publish
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.3.0'
+          registry-url: https://registry.npmjs.org/
+          
+      - name: Yarn
+        run: yarn install
+    
+      - name: Publish 🚀
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
