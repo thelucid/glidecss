@@ -6,7 +6,7 @@ on:
       - v*.*.*
 
 jobs:
-  test:
+  publish:
     name: Publish
     runs-on: ubuntu-latest
 
