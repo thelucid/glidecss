@@ -7,7 +7,7 @@
   "description": "A tiny component-first CSS framework for Sass; with a zero footprint by default. Build solid design systems with a set of simple tools, and the power to generate utility classes where appropriate.",
   "license": "MIT",
   "homepage": "http://thelucid.com",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "files": [
     "index.js",
     "README.md",
