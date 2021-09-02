@@ -15,8 +15,8 @@
         )
       )
     </script>
-    <script type="module" crossorigin src="assets/index.8e1cbf1b.js"></script>
-    <link rel="stylesheet" href="assets/index.b3a6a2e1.css">
+    <script type="module" crossorigin src="assets/index.d3ac014c.js"></script>
+    <link rel="stylesheet" href="assets/index.3744d07f.css">
   </head>
 
   <body class="page">
@@ -162,7 +162,7 @@
   <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> accent<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  
+
   <span class="token selector"><span class="token parent important">&amp;</span>:hover </span><span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> accent<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -260,7 +260,7 @@
 <h5>SCSS</h5>
 <pre><code class="language-scss"><span class="token selector">.menu </span><span class="token punctuation">{</span>
   <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  
+
   <span class="token keyword">@include</span> <span class="token function">screen</span><span class="token punctuation">(</span>lg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -298,7 +298,7 @@
 
 <span class="token selector">.menu </span><span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>menu<span class="token punctuation">,</span> palette<span class="token punctuation">,</span> background<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  
+
   <span class="token keyword">@include</span> <span class="token function">screens</span><span class="token punctuation">(</span>menu<span class="token punctuation">,</span> padding<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$padding</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token variable">$padding</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -385,7 +385,7 @@
 <h5>SCSS</h5>
 <pre><code class="language-scss"><span class="token selector">.menu </span><span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  
+
   <span class="token keyword">@include</span> <span class="token function">mode</span><span class="token punctuation">(</span>dark<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 3<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
@@ -581,11 +581,11 @@
   <span class="token selector">.sm\:box-1</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> .25rem<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-  
+
   <span class="token selector">.md\:box-2</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-  
+
   <span class="token comment">/* ... */</span>
 <span class="token punctuation">}</span>
 
@@ -699,7 +699,7 @@
 <tbody>
 <tr>
 <td>dark</td>
-<td>‘.&lt;mode&gt; &lt;selector&gt;’</td>
+<td><code>.&lt;mode&gt; &lt;selector&gt;</code></td>
 </tr>
 </tbody>
 </table>
@@ -708,7 +708,7 @@
 
 <span class="token selector">body </span><span class="token punctuation">{</span>
   <span class="token keyword">@include</span> <span class="token function">mode</span><span class="token punctuation">(</span>dark<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span> 
+    <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -729,15 +729,15 @@
 <tbody>
 <tr>
 <td>DEFAULT</td>
-<td>‘&lt;class&gt;:&lt;variant&gt;’</td>
+<td><code>&lt;class&gt;:&lt;variant&gt;</code></td>
 </tr>
 <tr>
 <td>screen</td>
-<td>(type: screen)</td>
+<td><code>(type: screen)</code></td>
 </tr>
 <tr>
 <td>mode</td>
-<td>(type: mode )</td>
+<td><code>(type: mode )</code></td>
 </tr>
 </tbody>
 </table>
@@ -775,49 +775,59 @@
 </thead>
 <tbody>
 <tr>
+<td>0</td>
+<td><code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code></td>
+<td><code style="color: #fff; background: #030405;">shade(#22272f, 90%)</code></td>
+</tr>
+<tr>
 <td>1</td>
-<td>tint(#222426, 0%)</td>
-<td>shade(#222426, 100%)</td>
+<td><code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code></td>
+<td><code style="color: #fff; background: #0a0c0e;">shade(#22272f, 70%)</code></td>
 </tr>
 <tr>
 <td>2</td>
-<td>tint(#222426, 50%)</td>
-<td>shade(#222426, 50%)</td>
+<td><code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code></td>
+<td><code style="color: #fff; background: #14171c;">shade(#22272f, 40%)</code></td>
 </tr>
 <tr>
 <td>3</td>
-<td>tint(#222426, 70%)</td>
-<td>shade(#222426, 30%)</td>
+<td><code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code></td>
+<td><code style="color: #fff; background: #1b1f26;">shade(#22272f, 20%)</code></td>
 </tr>
 <tr>
 <td>4</td>
-<td>tint(#222426, 90%)</td>
-<td>shade(#222426, 10%)</td>
+<td><code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code></td>
+<td><code style="color: #fff; background: #1f232a;">shade(#22272f, 10%)</code></td>
 </tr>
 <tr>
 <td>5</td>
-<td>tint(#222426, 100%)</td>
-<td>tint(#222426, 0%)</td>
+<td><code style="color: #bf3078; background: white;">tint(#22272f, 100%)</code></td>
+<td><code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code></td>
 </tr>
 <tr>
 <td>6</td>
-<td>tint(#222426, 90%)</td>
-<td>tint(#222426, 10%)</td>
+<td><code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code></td>
+<td><code style="color: #fff; background: #383d44;">tint(#22272f, 10%)</code></td>
 </tr>
 <tr>
 <td>7</td>
-<td>tint(#222426, 70%)</td>
-<td>tint(#222426, 30%)</td>
+<td><code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code></td>
+<td><code style="color: #fff; background: #4e5259;">tint(#22272f, 20%)</code></td>
 </tr>
 <tr>
 <td>8</td>
-<td>tint(#222426, 50%)</td>
-<td>tint(#222426, 50%)</td>
+<td><code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code></td>
+<td><code style="color: #fff; background: #7a7d82;">tint(#22272f, 40%)</code></td>
 </tr>
 <tr>
 <td>9</td>
-<td>tint(#222426, 0%)</td>
-<td>tint(#222426, 100%)</td>
+<td><code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code></td>
+<td><code style="color: #bf3078; background: #bdbec1;">tint(#22272f, 70%)</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code></td>
+<td><code style="color: #bf3078; background: #e9e9ea;">tint(#22272f, 90%)</code></td>
 </tr>
 </tbody>
 </table>
@@ -826,10 +836,10 @@
 <pre><code class="language-scss"><span class="token keyword">@include</span> <span class="token string">"glidecss/defaults/palette"</span><span class="token punctuation">;</span>
 
 <span class="token selector">body </span><span class="token punctuation">{</span>
-  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> 9<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> 10<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span>
   <span class="token punctuation">}</span>
-  
+
   <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> 5<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$background</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$background</span>
   <span class="token punctuation">}</span>
@@ -837,16 +847,16 @@
 </code></pre>
 <h5>CSS</h5>
 <pre><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> #222426<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #22272f<span class="token punctuation">;</span>
   <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token selector">.dark body</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> #222426<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #22272f<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Here <code>9</code> works well as a foreground color, and <code>5</code>  as a background color. This allows you to switch modes, with predictable results.</p>
+<p>Here <code>10</code> works well as a foreground color, and <code>5</code>  as a background color. This allows you to switch modes, with predictable results.</p>
 <h4>Spacing</h4>
 <p>The default spacing values are accessed with <code>theme(spacing, &lt;name&gt;)</code>.</p>
 <table>
@@ -965,7 +975,7 @@
 </code></pre>
 <h5>CSS</h5>
 <pre><code class="language-css"><span class="token selector">.heading</span> <span class="token punctuation">{</span>
-  <span class="token property">fonr-family</span><span class="token punctuation">:</span> ui-serif<span class="token punctuation">,</span> Georgia<span class="token punctuation">,</span> Cambria<span class="token punctuation">,</span> <span class="token string">"Times New Roman"</span><span class="token punctuation">,</span> Times<span class="token punctuation">,</span> serif<span class="token punctuation">;</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> ui-serif<span class="token punctuation">,</span> Georgia<span class="token punctuation">,</span> Cambria<span class="token punctuation">,</span> <span class="token string">"Times New Roman"</span><span class="token punctuation">,</span> Times<span class="token punctuation">,</span> serif<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4>Font size</h4>
