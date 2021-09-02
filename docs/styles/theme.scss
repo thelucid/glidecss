@@ -1,44 +1,6 @@
 @include theme((
   palette: (
     transparent: transparent,
-    primary: (
-      1: (
-        DEFAULT: tint(#252e3e, 0%),
-        dark: shade(#22272E, 80%)
-      ),
-      2: (
-        DEFAULT: tint(#252e3e, 30%),
-        dark: shade(#22272E, 50%)
-      ),
-      3: (
-        DEFAULT: tint(#252e3e, 80%),
-        dark: shade(#22272E, 30%)
-      ),
-      4: (
-        DEFAULT: tint(#252e3e, 92%),
-        dark: shade(#22272E, 15%)
-      ),
-      5: (
-        DEFAULT: tint(#252e41, 100%),
-        dark: #22272E
-      ),
-      6: (
-        DEFAULT: tint(#252e3e, 92%),
-        dark: tint(#22272E, 8%)
-      ),
-      7: (
-        DEFAULT: tint(#252e3e, 80%),
-        dark: tint(#22272E, 20%)
-      ),
-      8: (
-        DEFAULT: tint(#252e3e, 30%),
-        dark: tint(#22272E, 60%)
-      ),
-      9: (
-        DEFAULT: tint(#252e3e, 0%),
-        dark: tint(#22272E, 80%)
-      )
-    ),
     secondary: (
       dark: #96baef
     ),
@@ -54,5 +16,3 @@
     DEFAULT: .5rem
   )
 ));
-
-

@@ -2,13 +2,13 @@
   menu: (
     link: (
       h2: (
-        color: fetch(palette, primary, 9)
+        color: fetch(palette, primary, 10)
       ),
       normal: (
-        color: fetch(palette, primary, 8)
+        color: fetch(palette, primary, 9)
       ),
       hover: (
-        color: fetch(palette, primary, 9)
+        color: fetch(palette, primary, 10)
       ),
       current: (
         color: fetch(palette, accent)

@@ -18,7 +18,7 @@
     justify-content: space-around;
   }
 
-  @include modes(palette, primary, 8) using ($color) {
+  @include modes(palette, primary, 9) using ($color) {
     color: $color;
   }
 

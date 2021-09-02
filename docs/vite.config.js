@@ -14,6 +14,7 @@ const readmePlugin = () => {
       const md = require('markdown-it')({
         linkify: true,
         typographer: true,
+        html: true,
         highlight: function (text, lang) {
           return Prism.highlight(text, Prism.languages[lang], lang);
         }

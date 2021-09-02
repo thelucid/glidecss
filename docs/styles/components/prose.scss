@@ -3,29 +3,32 @@
     code: (
       background: (
         DEFAULT: theme(palette, primary, 6),
-        dark: theme(palette, primary, 4, dark)
+        dark: theme(palette, primary, 3, dark)
       ),
       foreground: fetch(palette, accent)
     ),
     pre: (
       code: (
         background: (
-          DEFAULT: theme(palette, primary, 9),
-          dark: theme(palette, primary, 4, dark)
+          DEFAULT: theme(palette, primary, 10),
+          dark: theme(palette, primary, 3, dark)
         ),
         foreground: (
-          DEFAULT: theme(palette, primary, 7),
-          dark: theme(palette, primary, 8, dark)
+          DEFAULT: theme(palette, primary, 6),
+          dark: theme(palette, primary, 10, dark)
         )
       )
     ),
     table: (
       cell: (
-        border: fetch(palette, primary, 6),
-        padding: (DEFAULT: theme(spacing, 1), lg: theme(spacing, 2))
+        border: fetch(palette, primary, 7),
+        padding: (
+          DEFAULT: theme(spacing, 1),
+          lg: theme(spacing, 2)
+        )
       ),
       header: (
-        color: fetch(palette, primary, 9)
+        color: fetch(palette, primary, 10)
       ),
       margin-bottom: theme(spacing, 3)
     )
@@ -38,7 +41,7 @@
   h1, h2, h3, h4, h5 {
     font-weight: bold;
 
-    @include modes(palette, primary, 9) using ($color) {
+    @include modes(palette, primary, 10) using ($color) {
       color: $color;
     }
   }
@@ -144,6 +147,10 @@
     @include modes(prose, code, foreground) using ($color) {
       color: $color;
     }
+  }
+
+  td code {
+    padding: theme(spacing, 1) theme(spacing, 2);
   }
 
   pre code {

@@ -43,7 +43,7 @@ This is a basic theme which can be accessed by using the `theme` function.
   padding: theme(spacing, 3);
   color: theme(palette, primary, 1);
   background: theme(palette, accent, 2);
-  
+
   &:hover {
     background: theme(palette, accent, 3);
   }
@@ -179,7 +179,7 @@ Use `screen` to manually define styles for a named screen.
 ```scss
 .menu {
   padding: theme(spacing, 2);
-  
+
   @include screen(lg) {
     padding: theme(spacing, 3);
   }
@@ -225,7 +225,7 @@ We can make a component responsive by defining properties that trigger for vario
 
 .menu {
   background: theme(menu, palette, background);
-  
+
   @include screens(menu, padding) using ($padding) {
     padding: $padding;
   }
@@ -339,7 +339,7 @@ Use `mode` to manually define styles for the named mode.
 ```scss
 .menu {
   background: theme(palette, primary, 2);
-  
+
   @include mode(dark) {
     background: theme(palette, primary, 3)
   }
@@ -595,11 +595,11 @@ We can combine `variants` and `modifiers` to create responsive, and/or mode spec
   .sm\:box-1 {
     padding: .25rem;
   }
-  
+
   .md\:box-2 {
     padding: .5rem;
   }
-  
+
   /* ... */
 }
 
@@ -713,7 +713,7 @@ The default modes are show below.
 
 | Mode | Value                |
 | ---- | -------------------- |
-| dark | '.<mode> <selector>' |
+| dark | `.<mode> <selector>` |
 
 ##### SCSS
 
@@ -722,7 +722,7 @@ The default modes are show below.
 
 body {
   @include mode(dark) {
-     background: black; 
+    background: black;
   }
 }
 ```
@@ -741,9 +741,9 @@ The default variants are show below.
 
 | Mode    | Value               |
 | ------- | ------------------- |
-| DEFAULT | '<class>:<variant>' |
-| screen  | (type: screen)      |
-| mode    | (type: mode )       |
+| DEFAULT | `<class>:<variant>` |
+| screen  | `(type: screen)`    |
+| mode    | `(type: mode )`     |
 
 ##### SCSS
 
@@ -779,17 +779,19 @@ The default palette has a single `primary` color with the following shades, acce
 
 | Shade | Default mode        | Dark mode            |
 | ----- | ------------------- | -------------------- |
-| 1     | tint(#222426, 0%)   | shade(#222426, 100%) |
-| 2     | tint(#222426, 50%)  | shade(#222426, 50%)  |
-| 3     | tint(#222426, 70%)  | shade(#222426, 30%)  |
-| 4     | tint(#222426, 90%)  | shade(#222426, 10%)  |
-| 5     | tint(#222426, 100%) | tint(#222426, 0%)    |
-| 6     | tint(#222426, 90%)  | tint(#222426, 10%)   |
-| 7     | tint(#222426, 70%)  | tint(#222426, 30%)   |
-| 8     | tint(#222426, 50%)  | tint(#222426, 50%)   |
-| 9     | tint(#222426, 0%)   | tint(#222426, 100%)  |
+| 0     | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #fff; background: #030405;">shade(#22272f, 90%)</code> |
+| 1     | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #fff; background: #0a0c0e;">shade(#22272f, 70%)</code> |
+| 2     | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #14171c;">shade(#22272f, 40%)</code> |
+| 3     | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #1b1f26;">shade(#22272f, 20%)</code> |
+| 4     | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #1f232a;">shade(#22272f, 10%)</code> |
+| 5     | <code style="color: #bf3078; background: white;">tint(#22272f, 100%)</code>   | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   |
+| 6     | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #383d44;">tint(#22272f, 10%)</code>  |
+| 7     | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #4e5259;">tint(#22272f, 20%)</code>  |
+| 8     | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #7a7d82;">tint(#22272f, 40%)</code>  |
+| 9     | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #bf3078; background: #bdbec1;">tint(#22272f, 70%)</code>  |
+| 10    | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #bf3078; background: #e9e9ea;">tint(#22272f, 90%)</code>  |
 
-Note the use of supplied `tint` and `shade` functions. 
+Note the use of supplied `tint` and `shade` functions.
 
 ##### SCSS
 
@@ -797,10 +799,10 @@ Note the use of supplied `tint` and `shade` functions.
 @include "glidecss/defaults/palette";
 
 body {
-  @include modes(palette, 9) using ($color) {
+  @include modes(palette, 10) using ($color) {
     color: $color
   }
-  
+
   @include modes(palette, 5) using ($background) {
     background: $background
   }
@@ -811,17 +813,17 @@ body {
 
 ```css
 body {
-  color: #222426;
+  color: #22272f;
   background: #fff;
 }
 
 .dark body {
   color: #fff;
-  background: #222426;
+  background: #22272f;
 }
 ```
 
-Here `9` works well as a foreground color, and `5`  as a background color. This allows you to switch modes, with predictable results.
+Here `10` works well as a foreground color, and `5`  as a background color. This allows you to switch modes, with predictable results.
 
 #### Spacing
 
@@ -884,7 +886,7 @@ The default font families are accessed with `theme(font, family, <name>)`.
 
 ```css
 .heading {
-  fonr-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 ```
 

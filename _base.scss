@@ -15,6 +15,7 @@ $_theme: () !default;
 
 @function theme($path...) {
   $value: fetch($path...);
+
   @if $value == null { @warn "Can't find #{$path}"; }
 
   @return if(
@@ -45,10 +46,13 @@ $_theme: () !default;
 @mixin mode($name) {
   $selector: ();
 
+  $template: fetch(modes, $name);
+  @if $template == null { @error "Unknown mode: #{$name}"; }
+
   @each $complex in selector-parse(&) {
     $selector: append(
       $selector,
-      _interpolate(fetch(modes, $name), (mode: $name, selector: $complex)),
+      _interpolate($template, (mode: $name, selector: $complex)),
       comma
     );
   }
@@ -145,7 +149,10 @@ $_theme: () !default;
 }
 
 @function _lookup($arg, $args...) {
-  @return if(type-of($arg) == map, $arg, fetch($arg, $args...));
+  $value: if(type-of($arg) == map, $arg, fetch($arg, $args...));
+  @if $value == null { @error "Can't find: #{$arg}, #{$args}"; }
+
+  @return $value;
 }
 
 @function _selector($name, $original, $template, $tokens) {

@@ -1,42 +1,52 @@
-@include theme((
-  palette: (
-    primary: (
-      1: (
-        DEFAULT: tint(#222426, 0%),
-        dark: shade(#222426, 100%)
-      ),
-      2: (
-        DEFAULT: tint(#222426, 50%),
-        dark: shade(#222426, 50%)
-      ),
-      3: (
-        DEFAULT: tint(#222426, 70%),
-        dark: shade(#222426, 30%)
-      ),
-      4: (
-        DEFAULT: tint(#222426, 90%),
-        dark: shade(#222426, 10%)
-      ),
-      5: (
-        DEFAULT: tint(#222426, 100%),
-        dark: tint(#222426, 0%),
-      ),
-      6: (
-        DEFAULT: tint(#222426, 90%),
-        dark: tint(#222426, 10%)
-      ),
-      7: (
-        DEFAULT: tint(#222426, 70%),
-        dark: tint(#222426, 30%)
-      ),
-      8: (
-        DEFAULT: tint(#222426, 50%),
-        dark: tint(#222426, 50%)
-      ),
-      9: (
-        DEFAULT: tint(#222426, 0%),
-        dark: tint(#222426, 100%)
+@each $name, $color in (primary: #22272f) {
+  @include theme((
+    palette: (
+      #{$name}: (
+        0: (
+          DEFAULT: tint($color, 0%),
+          dark: shade($color, 90%)
+        ),
+        1: (
+          DEFAULT: tint($color, 35%),
+          dark: shade($color, 70%)
+        ),
+        2: (
+          DEFAULT: tint($color, 65%),
+          dark: shade($color, 40%)
+        ),
+        3: (
+          DEFAULT: tint($color, 85%),
+          dark: shade($color, 20%)
+        ),
+        4: (
+          DEFAULT: tint($color, 95%),
+          dark: shade($color, 10%)
+        ),
+        5: (
+          DEFAULT: tint($color, 100%),
+          dark: shade($color, 0%)
+        ),
+        6: (
+          DEFAULT: tint($color, 95%),
+          dark: tint($color, 10%)
+        ),
+        7: (
+          DEFAULT: tint($color, 85%),
+          dark: tint($color, 20%)
+        ),
+        8: (
+          DEFAULT: tint($color, 65%),
+          dark: tint($color, 40%)
+        ),
+        9: (
+          DEFAULT: tint($color, 35%),
+          dark: tint($color, 70%)
+        ),
+        10: (
+          DEFAULT: tint($color, 0%),
+          dark: tint($color, 90%)
+        )
       )
     )
-  )
-));
+  ));
+}
