@@ -50,3 +50,61 @@
     )
   ));
 }
+
+@each $name, $color in (
+  accent: #3b82f6,
+  positive: #24c55f,
+  negative: #dc2627,
+  neutral: #f59e0c
+) {
+  @include theme((
+    palette: (
+      #{$name}: (
+        0: (
+          DEFAULT: tint($color, 90%),
+          dark: shade($color, 90%)
+        ),
+        1: (
+          DEFAULT: tint($color, 70%),
+          dark: shade($color, 70%)
+        ),
+        2: (
+          DEFAULT: tint($color, 40%),
+          dark: shade($color, 40%)
+        ),
+        3: (
+          DEFAULT: tint($color, 20%),
+          dark: shade($color, 20%)
+        ),
+        4: (
+          DEFAULT: tint($color, 10%),
+          dark: shade($color, 10%)
+        ),
+        5: (
+          DEFAULT: tint($color, 0%),
+          dark: shade($color, 0%)
+        ),
+        6: (
+          DEFAULT: shade($color, 10%),
+          dark: tint($color, 10%)
+        ),
+        7: (
+          DEFAULT: shade($color, 20%),
+          dark: tint($color, 20%)
+        ),
+        8: (
+          DEFAULT: shade($color, 40%),
+          dark: tint($color, 40%)
+        ),
+        9: (
+          DEFAULT: shade($color, 70%),
+          dark: tint($color, 70%)
+        ),
+        10: (
+          DEFAULT: shade($color, 90%),
+          dark: tint($color, 90%)
+        )
+      )
+    )
+  ));
+}

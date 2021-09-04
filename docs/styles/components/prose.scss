@@ -5,7 +5,7 @@
         DEFAULT: theme(palette, primary, 6),
         dark: theme(palette, primary, 3, dark)
       ),
-      foreground: fetch(palette, accent)
+      foreground: fetch(palette, accent, 5)
     ),
     pre: (
       code: (

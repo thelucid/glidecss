@@ -1,5 +1,5 @@
 a {
-  @include modes(palette, accent) using ($color) {
+  @include modes(palette, accent, 5) using ($color) {
     color: $color;
   }
 }

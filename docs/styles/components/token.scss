@@ -1,7 +1,7 @@
 @include theme((
   token: (
     function: (
-      color: fetch(palette, accent, dark)
+      color: fetch(palette, accent, 5, dark)
     ),
     punctuation: (
       color: fetch(palette, primary, 10, dark)

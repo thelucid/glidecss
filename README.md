@@ -775,21 +775,23 @@ The default variants are show below.
 
 #### Palette
 
-The default palette has a single `primary` color with the following shades, accessed with `theme(palette, primary, <shade>, <mode>)`. Tweak as need and add futher palette colors, such as `accent`.
+The default palette is accessed with `theme(palette, <name>, <tone>, <mode>)`; color names are semantic, so tweak as necessary to fit your brand.
+  
+##### Primary
 
-| Shade | Default mode        | Dark mode            |
-| ----- | ------------------- | -------------------- |
-| 0     | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #fff; background: #030405;">shade(#22272f, 90%)</code> |
-| 1     | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #fff; background: #0a0c0e;">shade(#22272f, 70%)</code> |
-| 2     | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #14171c;">shade(#22272f, 40%)</code> |
-| 3     | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #1b1f26;">shade(#22272f, 20%)</code> |
-| 4     | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #1f232a;">shade(#22272f, 10%)</code> |
-| 5     | <code style="color: #bf3078; background: white;">tint(#22272f, 100%)</code>   | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   |
-| 6     | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #383d44;">tint(#22272f, 10%)</code>  |
-| 7     | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #4e5259;">tint(#22272f, 20%)</code>  |
-| 8     | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #7a7d82;">tint(#22272f, 40%)</code>  |
-| 9     | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #bf3078; background: #bdbec1;">tint(#22272f, 70%)</code>  |
-| 10    | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #bf3078; background: #e9e9ea;">tint(#22272f, 90%)</code>  |
+| Tone | Default mode        | Dark mode            |
+| ---- | ------------------- | -------------------- |
+| 0    | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #fff; background: #030405;">shade(#22272f, 90%)</code> |
+| 1    | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #fff; background: #0a0c0e;">shade(#22272f, 70%)</code> |
+| 2    | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #14171c;">shade(#22272f, 40%)</code> |
+| 3    | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #1b1f26;">shade(#22272f, 20%)</code> |
+| 4    | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #1f232a;">shade(#22272f, 10%)</code> |
+| 5    | <code style="color: #bf3078; background: white;">tint(#22272f, 100%)</code>   | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   |
+| 6    | <code style="color: #bf3078; background: #f4f4f5;">tint(#22272f, 95%)</code>  | <code style="color: #fff; background: #383d44;">tint(#22272f, 10%)</code>  |
+| 7    | <code style="color: #bf3078; background: #dedfe0;">tint(#22272f, 85%)</code>  | <code style="color: #fff; background: #4e5259;">tint(#22272f, 20%)</code>  |
+| 8    | <code style="color: #bf3078; background: #b2b3b6;">tint(#22272f, 65%)</code>  | <code style="color: #fff; background: #7a7d82;">tint(#22272f, 40%)</code>  |
+| 9    | <code style="color: #fff; background: #6f7378;">tint(#22272f, 35%)</code>  | <code style="color: #bf3078; background: #bdbec1;">tint(#22272f, 70%)</code>  |
+| 10   | <code style="color: #fff; background: #22272f;">tint(#22272f, 0%)</code>   | <code style="color: #bf3078; background: #e9e9ea;">tint(#22272f, 90%)</code>  |
 
 Note the use of supplied `tint` and `shade` functions.
 
@@ -799,11 +801,11 @@ Note the use of supplied `tint` and `shade` functions.
 @include "glidecss/defaults/palette";
 
 body {
-  @include modes(palette, 10) using ($color) {
+  @include modes(palette, primary, 10) using ($color) {
     color: $color
   }
 
-  @include modes(palette, 5) using ($background) {
+  @include modes(palette, primary, 5) using ($background) {
     background: $background
   }
 }

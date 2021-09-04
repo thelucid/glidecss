@@ -11,7 +11,7 @@
         color: fetch(palette, primary, 10)
       ),
       current: (
-        color: fetch(palette, accent)
+        color: fetch(palette, accent, 5)
       )
     ),
     spacing: (
