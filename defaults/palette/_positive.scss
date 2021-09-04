@@ -1,0 +1,7 @@
+@import "../tones";
+
+@include theme((
+  palette: (
+    positive: tones(#24c55f)
+  )
+));

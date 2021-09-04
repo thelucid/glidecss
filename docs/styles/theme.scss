@@ -1,18 +1,23 @@
+@import "../defaults/tones";
+
 @include theme((
   palette: (
     transparent: transparent,
-    secondary: (
-      dark: #96baef
-    ),
-    tertiary: (
-      dark: #18cfd0
-    ),
-    accent: (
-      5: (
-        DEFAULT: #bf3078,
-        dark: #cc3d85
-      )
-    )
+    secondary: tones(#96baef),
+    tertiary: tones(#18cfd0),
+    accent: tones(#bf3078, (
+      (DEFAULT: (tint:  90%), dark: (shade: 90%, lightness: 4%)),
+      (DEFAULT: (tint:  70%), dark: (shade: 70%, lightness: 4%)),
+      (DEFAULT: (tint:  40%), dark: (shade: 40%, lightness: 4%)),
+      (DEFAULT: (tint:  20%), dark: (shade: 20%, lightness: 4%)),
+      (DEFAULT: (tint:  10%), dark: (shade: 10%, lightness: 4%)),
+      (DEFAULT: (          ), dark: (            lightness: 4%)),
+      (DEFAULT: (shade: 10%), dark: (tint:  10%, lightness: 4%)),
+      (DEFAULT: (shade: 20%), dark: (tint:  20%, lightness: 4%)),
+      (DEFAULT: (shade: 40%), dark: (tint:  40%, lightness: 4%)),
+      (DEFAULT: (shade: 70%), dark: (tint:  70%, lightness: 4%)),
+      (DEFAULT: (shade: 90%), dark: (tint:  90%, lightness: 4%))
+    ))
   ),
   radius: (
     DEFAULT: .5rem

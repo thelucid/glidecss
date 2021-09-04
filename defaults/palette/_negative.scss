@@ -1,0 +1,7 @@
+@import "../tones";
+
+@include theme((
+  palette: (
+    negative: tones(#dc2627)
+  )
+));

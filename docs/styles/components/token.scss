@@ -22,10 +22,10 @@
       color: fetch(palette, primary, 10, dark),
     ),
     keyword: (
-      color: fetch(palette, secondary, dark)
+      color: fetch(palette, secondary, 5, dark)
     ),
     property: (
-      color: fetch(palette, tertiary, dark)
+      color: fetch(palette, tertiary, 5, dark)
     )
   )
 ));

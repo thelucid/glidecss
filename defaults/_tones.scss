@@ -1,0 +1,17 @@
+@include theme((
+  tones: (
+    DEFAULT: (
+      (DEFAULT: (tint:  90%), dark: (shade: 90%)),
+      (DEFAULT: (tint:  70%), dark: (shade: 70%)),
+      (DEFAULT: (tint:  40%), dark: (shade: 40%)),
+      (DEFAULT: (tint:  20%), dark: (shade: 20%)),
+      (DEFAULT: (tint:  10%), dark: (shade: 10%)),
+      (DEFAULT: (          ), dark: (          )),
+      (DEFAULT: (shade: 10%), dark: (tint:  10%)),
+      (DEFAULT: (shade: 20%), dark: (tint:  20%)),
+      (DEFAULT: (shade: 40%), dark: (tint:  40%)),
+      (DEFAULT: (shade: 70%), dark: (tint:  70%)),
+      (DEFAULT: (shade: 90%), dark: (tint:  90%))
+    )
+  )
+));

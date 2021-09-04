@@ -1,0 +1,7 @@
+@import "../tones";
+
+@include theme((
+  palette: (
+    neutral: tones(#f59e0c)
+  )
+));

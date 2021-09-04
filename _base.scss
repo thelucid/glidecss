@@ -126,6 +126,30 @@ $_theme: () !default;
   }
 }
 
+// TODO: Test and document.
+@function tones($color, $tones: null) {
+  @if ($tones == null) { $tones: theme(tones) };
+  $result: ();
+
+  @for $index from 1 through length($tones) {
+    $adjustments: nth($tones, $index);
+    $name: $index - 1;
+    $tone: ();
+
+    @each $mode, $adjust in $adjustments {
+      $tint: map-get($adjust, tint);
+      $shade: map-get($adjust, shade);
+      $adjust: map-remove(map-remove($adjust, tint), shade);
+      $new: if($tint, tint($color, $tint), if($shade, shade($color, $shade), $color));
+      $tone: map-merge($tone, ($mode: adjust-color($new, $adjust...)));
+    }
+
+    $result: map-merge($result, ($name: $tone));
+  }
+
+  @return $result;
+}
+
 @function tint($color, $percentage) {
   @return mix(#fff, $color, $percentage);
 }

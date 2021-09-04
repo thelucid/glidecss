@@ -1,0 +1,7 @@
+@import "../tones";
+
+@include theme((
+  palette: (
+    accent: tones(#3b82f6)
+  )
+));
