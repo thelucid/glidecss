@@ -15,8 +15,8 @@
         )
       )
     </script>
-    <script type="module" crossorigin src="assets/index.d3ac014c.js"></script>
-    <link rel="stylesheet" href="assets/index.3744d07f.css">
+    <script type="module" crossorigin src="assets/index.dcac72db.js"></script>
+    <link rel="stylesheet" href="assets/index.fe4ff129.css">
   </head>
 
   <body class="page">
@@ -764,11 +764,12 @@
 <span class="token comment">/* ... */</span>
 </code></pre>
 <h4>Palette</h4>
-<p>The default palette has a single <code>primary</code> color with the following shades, accessed with <code>theme(palette, primary, &lt;shade&gt;, &lt;mode&gt;)</code>. Tweak as need and add futher palette colors, such as <code>accent</code>.</p>
+<p>The default palette is accessed with <code>theme(palette, &lt;name&gt;, &lt;tone&gt;, &lt;mode&gt;)</code>; color names are semantic, so tweak as necessary to fit your brand.</p>
+<h5>Primary</h5>
 <table>
 <thead>
 <tr>
-<th>Shade</th>
+<th>Tone</th>
 <th>Default mode</th>
 <th>Dark mode</th>
 </tr>
@@ -836,11 +837,11 @@
 <pre><code class="language-scss"><span class="token keyword">@include</span> <span class="token string">"glidecss/defaults/palette"</span><span class="token punctuation">;</span>
 
 <span class="token selector">body </span><span class="token punctuation">{</span>
-  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> 10<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 10<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span>
   <span class="token punctuation">}</span>
 
-  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> 5<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$background</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 5<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$background</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$background</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
