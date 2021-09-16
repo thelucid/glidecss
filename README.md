@@ -265,6 +265,44 @@ Responsive properties are named after their screen name. The `DEFAULT` will be d
 }
 ```
 
+#### Lookup (shorthand)
+
+It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and a path list:
+
+##### SCSS
+
+```scss
+##### SCSS
+
+```scss
+@include theme((
+  menu: (
+    padding: (
+      DEFAULT: theme(spacing, 2),
+      lg: theme(spacing, 3)
+    )
+  )
+));
+
+.menu {
+  @include screens(padding, (menu, padding));
+}
+```
+
+##### CSS
+
+```css
+.menu {
+  padding: .5rem;
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    padding: .75rem;
+  }
+}
+```
+
 #### Inline
 
 You can supply a map to `screens`, although property lookup is recommended.
@@ -279,6 +317,35 @@ You can supply a map to `screens`, although property lookup is recommended.
   )) using ($padding) {
     padding: $padding;
   }
+}
+```
+
+##### CSS
+
+```css
+.menu {
+  padding: .5rem;
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    padding: .75rem;
+  }
+}
+```
+
+#### Inline (shorthand)
+
+It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and an inline map:
+
+##### SCSS
+
+```scss
+##### SCSS
+
+```scss
+.menu {
+  @include screens(padding, (DEFAULT: theme(spacing, 2), lg: theme(spacing, 3)));
 }
 ```
 
@@ -393,6 +460,39 @@ To easily set properties across modes, we can make use of `modes` to look them u
 }
 ```
 
+#### Lookup (shorthand)
+
+It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and a path list:
+
+##### SCSS
+
+```scss
+@include theme((
+  menu: (
+    background: (
+      DEFAULT: theme(palette, primary, 2),
+      dark: theme(palette, primary, 3)
+    )
+  )
+));
+
+.menu {
+  @include modes(background, (menu, background));
+}
+```
+
+##### CSS
+
+```css
+.menu {
+  background: #eee;
+}
+
+.dark .menu {
+  background: #888;
+}
+```
+
 #### Inline
 
 You can supply a map to `modes`, although property lookup is recommended.
@@ -407,6 +507,33 @@ You can supply a map to `modes`, although property lookup is recommended.
   )) using ($background) {
     background: $background;
   }
+}
+```
+
+##### CSS
+
+```css
+.menu {
+  background: #eee;
+}
+
+.dark .menu {
+  background: #888;
+}
+```
+
+#### Inline (shorthand)
+
+It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and an inline map:
+
+##### SCSS
+
+```scss
+.menu {
+  @include modes(background, (
+    DEFAULT: theme(palette, primary, 2),
+    dark: theme(palette, primary, 3)
+  ));
 }
 ```
 
@@ -547,6 +674,58 @@ You can also specify an inline map, although property lookup is recommended.
   @include modifiers((1: .25rem, 2: .5rem)) using ($spacing) {
     padding: $spacing;
   }
+}
+```
+
+##### CSS
+
+```css
+.box-1 {
+  padding: .25rem;
+}
+
+.box-2 {
+  padding: .5rem;
+}
+```
+
+#### Modifiers (shorthand)
+
+It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property with a path list or inline map:
+
+##### SCSS
+
+```scss
+.box {
+  @include modifiers(padding, (spacing));
+}
+```
+
+##### CSS
+
+```css
+.box-1 {
+  padding: .25rem;
+}
+
+.box-2 {
+  padding: .5rem;
+}
+
+.box-3 {
+  padding: .75rem;
+}
+
+/* etc. */
+```
+
+You can also specify an inline map, although property lookup is recommended.
+
+##### SCSS
+
+```scss
+.box {
+  @include modifiers(padding, (1: .25rem, 2: .5rem));
 }
 ```
 

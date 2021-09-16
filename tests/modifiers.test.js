@@ -48,16 +48,21 @@ describe('modifiers mixin', () => {
         )
       ));
 
-      .button, .one span .two a {
+      .longhand, .one span .two a {
         @include modifiers(button, padding) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand, .one span .two a {
+        @include modifiers(padding, (button, padding));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button-small,.one span .two-small a{padding:.5rem}' +
-      '.button-large,.one span .two-large a{padding:1rem}'
+      '.longhand-small,.one span .two-small a{padding:.5rem}' +
+      '.longhand-large,.one span .two-large a{padding:1rem}' +
+      '.shorthand-small,.one span .two-small a{padding:.5rem}' +
+      '.shorthand-large,.one span .two-large a{padding:1rem}'
     );
   });
 
@@ -74,16 +79,21 @@ describe('modifiers mixin', () => {
         )
       ));
 
-      .button, .one span .two a {
+      .longhand, .one span .two a {
         @include modifiers(button, padding) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand, .one span .two a {
+        @include modifiers(padding, (button, padding));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button,.one span .two a{padding:.5rem}' +
-      '.button-large,.one span .two-large a{padding:1rem}'
+      '.longhand,.one span .two a{padding:.5rem}' +
+      '.longhand-large,.one span .two-large a{padding:1rem}' +
+      '.shorthand,.one span .two a{padding:.5rem}' +
+      '.shorthand-large,.one span .two-large a{padding:1rem}'
     );
   });
 
@@ -91,16 +101,21 @@ describe('modifiers mixin', () => {
     const data = `
       @import "./base";
 
-      .button, .one span .two a {
+      .longhand, .one span .two a {
         @include modifiers((small: .5rem, large: 1rem)) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand, .one span .two a {
+        @include modifiers(padding, (small: .5rem, large: 1rem));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button-small,.one span .two-small a{padding:.5rem}' +
-      '.button-large,.one span .two-large a{padding:1rem}'
+      '.longhand-small,.one span .two-small a{padding:.5rem}' +
+      '.longhand-large,.one span .two-large a{padding:1rem}' +
+      '.shorthand-small,.one span .two-small a{padding:.5rem}' +
+      '.shorthand-large,.one span .two-large a{padding:1rem}'
     );
   });
 
@@ -108,16 +123,21 @@ describe('modifiers mixin', () => {
     const data = `
       @import "./base";
 
-      .button, .one span .two a {
+      .longhand, .one span .two a {
         @include modifiers((DEFAULT: .5rem, large: 1rem)) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand, .one span .two a {
+        @include modifiers(padding, (DEFAULT: .5rem, large: 1rem));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button,.one span .two a{padding:.5rem}' +
-      '.button-large,.one span .two-large a{padding:1rem}'
+      '.longhand,.one span .two a{padding:.5rem}' +
+      '.longhand-large,.one span .two-large a{padding:1rem}' +
+      '.shorthand,.one span .two a{padding:.5rem}' +
+      '.shorthand-large,.one span .two-large a{padding:1rem}'
     );
   });
 });

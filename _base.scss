@@ -30,42 +30,58 @@ $_theme: () !default;
 }
 
 @mixin screen($name) {
-  @media(min-width: fetch(screens, $name)) { @content; }
+  @if $name == DEFAULT {
+    @content;
+  } @else {
+    @media(min-width: fetch(screens, $name)) { @content; }
+  }
 }
 
-@mixin screens($path...) {
-  @each $name, $value in _lookup($path...) {
-    @if $name == DEFAULT {
-      @content($value);
+@mixin screens($args...) {
+  @include _property($args...) using ($property, $map) {
+    @if ($property) {
+      @each $name, $value in $map {
+        @include screen($name) { #{$property}: $value; }
+      }
     } @else {
-      @include screen($name) { @content($value); }
+      @each $name, $value in $map {
+        @include screen($name) { @content($value); }
+      }
     }
   }
 }
 
 @mixin mode($name) {
-  $selector: ();
+  @if $name == DEFAULT {
+    @content;
+  } @else {
+    $selector: ();
 
-  $template: fetch(modes, $name);
-  @if $template == null { @error "Unknown mode: #{$name}"; }
+    $template: fetch(modes, $name);
+    @if $template == null { @error "Unknown mode: #{$name}"; }
 
-  @each $complex in selector-parse(&) {
-    $selector: append(
-      $selector,
-      _interpolate($template, (mode: $name, selector: $complex)),
-      comma
-    );
+    @each $complex in selector-parse(&) {
+      $selector: append(
+        $selector,
+        _interpolate($template, (mode: $name, selector: $complex)),
+        comma
+      );
+    }
+
+    @at-root #{$selector} { @content; }
   }
-
-  @at-root #{$selector} { @content; }
 }
 
-@mixin modes($path...) {
-  @each $name, $value in _lookup($path...) {
-    @if $name == DEFAULT {
-      @content($value);
+@mixin modes($args...) {
+  @include _property($args...) using ($property, $map) {
+    @if ($property) {
+      @each $name, $value in $map {
+        @include mode($name) { #{$property}: $value; }
+      }
     } @else {
-      @include mode($name) { @content($value); }
+      @each $name, $value in $map {
+        @include mode($name) { @content($value); }
+      }
     }
   }
 }
@@ -120,9 +136,17 @@ $_theme: () !default;
   @at-root #{$selector} { @content; }
 }
 
-@mixin modifiers($path...) {
-  @each $name, $value in _lookup($path...) {
-    @include modifier($name) { @content($value); }
+@mixin modifiers($args...) {
+  @include _property($args...) using ($property, $map) {
+    @if ($property) {
+      @each $name, $value in $map {
+        @include modifier($name) { #{$property}: $value; }
+      }
+    } @else {
+      @each $name, $value in $map {
+        @include modifier($name) { @content($value); }
+      }
+    }
   }
 }
 
@@ -175,8 +199,24 @@ $_theme: () !default;
   @return $result;
 }
 
+@mixin _property($args...) {
+  $first: nth($args, 1);
+  $second: length($args) > 1 and nth($args, 2);
+
+  $property: if(length($args) == 2 and type-of($first) == string and (
+    type-of($second) == map or type-of($second) == list
+  ), $first, null);
+
+  @content($property, if($property, _lookup($second), _lookup($args...)));
+}
+
 @function _lookup($arg, $args...) {
-  $value: if(type-of($arg) == map, $arg, fetch($arg, $args...));
+  $value: if(
+    type-of($arg) == map, $arg, if(
+      type-of($arg) == list, fetch($arg...), fetch($arg, $args...)
+    )
+  );
+
   @if $value == null { @error "Can't find: #{$arg}, #{$args}"; }
 
   @return $value;

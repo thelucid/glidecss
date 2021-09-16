@@ -40,15 +40,19 @@ describe('modes mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include modes(button, background) using ($background) {
           background: $background;
         }
       }
+      .shorthand {
+        @include modes(background, (button, background));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.dark .button{background:#000}'
+      '.dark .longhand{background:#000}' +
+      '.dark .shorthand{background:#000}'
     );
   });
 
@@ -68,15 +72,19 @@ describe('modes mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include modes(button, background) using ($background) {
           background: $background;
         }
       }
+      .shorthand {
+        @include modes(background, (button, background));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button{background:#fff}.dark .button{background:#000}'
+      '.longhand{background:#fff}.dark .longhand{background:#000}' +
+      '.shorthand{background:#fff}.dark .shorthand{background:#000}'
     );
   });
 
@@ -90,15 +98,19 @@ describe('modes mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include modes((dark: black)) using ($background) {
           background: $background;
         }
       }
+      .shorthand {
+        @include modes(background, (dark: black));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.dark .button{background:#000}'
+      '.dark .longhand{background:#000}' +
+      '.dark .shorthand{background:#000}'
     );
   });
 
@@ -112,15 +124,19 @@ describe('modes mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include modes((DEFAULT: white, dark: black)) using ($background) {
           background: $background;
         }
       }
+      .shorthand {
+        @include modes(background, (DEFAULT: white, dark: black));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button{background:#fff}.dark .button{background:#000}'
+      '.longhand{background:#fff}.dark .longhand{background:#000}' +
+      '.shorthand{background:#fff}.dark .shorthand{background:#000}'
     );
   });
 });

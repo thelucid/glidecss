@@ -43,16 +43,21 @@ describe('screens mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include screens(button, padding) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand {
+        @include screens(padding, (button, padding));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '@media(min-width: 800px){.button{padding:.75rem}}' +
-      '@media(min-width: 1000px){.button{padding:1rem}}'
+      '@media(min-width: 800px){.longhand{padding:.75rem}}' +
+      '@media(min-width: 1000px){.longhand{padding:1rem}}' +
+      '@media(min-width: 800px){.shorthand{padding:.75rem}}' +
+      '@media(min-width: 1000px){.shorthand{padding:1rem}}'
     );
   });
 
@@ -73,16 +78,21 @@ describe('screens mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include screens(button, padding) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand {
+        @include screens(padding, (button, padding));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button{padding:.5rem}' +
-      '@media(min-width: 800px){.button{padding:.75rem}}'
+      '.longhand{padding:.5rem}' +
+      '@media(min-width: 800px){.longhand{padding:.75rem}}' +
+      '.shorthand{padding:.5rem}' +
+      '@media(min-width: 800px){.shorthand{padding:.75rem}}'
     );
   });
 
@@ -97,16 +107,21 @@ describe('screens mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include screens((md: .75rem, lg: 1rem)) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand {
+        @include screens(padding, (md: .75rem, lg: 1rem));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '@media(min-width: 800px){.button{padding:.75rem}}' +
-      '@media(min-width: 1000px){.button{padding:1rem}}'
+      '@media(min-width: 800px){.longhand{padding:.75rem}}' +
+      '@media(min-width: 1000px){.longhand{padding:1rem}}' +
+      '@media(min-width: 800px){.shorthand{padding:.75rem}}' +
+      '@media(min-width: 1000px){.shorthand{padding:1rem}}'
     );
   });
 
@@ -121,16 +136,21 @@ describe('screens mixin', () => {
         )
       ));
 
-      .button {
+      .longhand {
         @include screens((DEFAULT: .5rem, md: .75rem)) using ($padding) {
           padding: $padding;
         }
       }
+      .shorthand {
+        @include screens(padding, (DEFAULT: .5rem, md: .75rem));
+      }
     `;
 
     expect(render({ data }).css.toString()).toEqual(
-      '.button{padding:.5rem}' +
-      '@media(min-width: 800px){.button{padding:.75rem}}'
+      '.longhand{padding:.5rem}' +
+      '@media(min-width: 800px){.longhand{padding:.75rem}}' +
+      '.shorthand{padding:.5rem}' +
+      '@media(min-width: 800px){.shorthand{padding:.75rem}}'
     );
   });
 });
