@@ -333,6 +333,36 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h4>Lookup (shorthand)</h4>
+<p>It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and a path list:</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss">##### SCSS
+
+```scss
+<span class="token keyword">@include</span> <span class="token function">theme</span><span class="token punctuation">(</span><span class="token punctuation">(</span>
+  <span class="token property">menu</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+      <span class="token property">DEFAULT</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token property">lg</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 3<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token selector">.menu </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">screens</span><span class="token punctuation">(</span>padding<span class="token punctuation">,</span> <span class="token punctuation">(</span>menu<span class="token punctuation">,</span> padding<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.menu</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.menu</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> .75rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4>Inline</h4>
 <p>You can supply a map to <code>screens</code>, although property lookup is recommended.</p>
 <h5>SCSS</h5>
@@ -343,6 +373,27 @@
   <span class="token punctuation">)</span><span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$padding</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token variable">$padding</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.menu</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.menu</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> .75rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4>Inline (shorthand)</h4>
+<p>It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and an inline map:</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss"><span class="token selector">##### SCSS
+
+```scss
+.menu </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">screens</span><span class="token punctuation">(</span>padding<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token property">DEFAULT</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token property">lg</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>spacing<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h5>CSS</h5>
@@ -427,6 +478,31 @@
   <span class="token property">background</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h4>Lookup (shorthand)</h4>
+<p>It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and a path list:</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss"><span class="token keyword">@include</span> <span class="token function">theme</span><span class="token punctuation">(</span><span class="token punctuation">(</span>
+  <span class="token property">menu</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+      <span class="token property">DEFAULT</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token property">dark</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 3<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token selector">.menu </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>background<span class="token punctuation">,</span> <span class="token punctuation">(</span>menu<span class="token punctuation">,</span> background<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.menu</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.dark .menu</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4>Inline</h4>
 <p>You can supply a map to <code>modes</code>, although property lookup is recommended.</p>
 <h5>SCSS</h5>
@@ -437,6 +513,25 @@
   <span class="token punctuation">)</span><span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$background</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$background</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.menu</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.dark .menu</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4>Inline (shorthand)</h4>
+<p>It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and an inline map:</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss"><span class="token selector">.menu </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modes</span><span class="token punctuation">(</span>background<span class="token punctuation">,</span> <span class="token punctuation">(</span>
+    <span class="token property">DEFAULT</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token property">dark</span><span class="token punctuation">:</span> <span class="token function">theme</span><span class="token punctuation">(</span>palette<span class="token punctuation">,</span> primary<span class="token punctuation">,</span> 3<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h5>CSS</h5>
@@ -544,6 +639,43 @@
   <span class="token keyword">@include</span> <span class="token function">modifiers</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token property">1</span><span class="token punctuation">:</span> .25rem<span class="token punctuation">,</span> <span class="token property">2</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">)</span><span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$spacing</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token variable">$spacing</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.box-1</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .25rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.box-2</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4>Modifiers (shorthand)</h4>
+<p>It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property with a path list or inline map:</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss"><span class="token selector">.box </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modifiers</span><span class="token punctuation">(</span>padding<span class="token punctuation">,</span> <span class="token punctuation">(</span>spacing<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5>CSS</h5>
+<pre><code class="language-css"><span class="token selector">.box-1</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .25rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.box-2</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.box-3</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> .75rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* etc. */</span>
+</code></pre>
+<p>You can also specify an inline map, although property lookup is recommended.</p>
+<h5>SCSS</h5>
+<pre><code class="language-scss"><span class="token selector">.box </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">modifiers</span><span class="token punctuation">(</span>padding<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token property">1</span><span class="token punctuation">:</span> .25rem<span class="token punctuation">,</span> <span class="token property">2</span><span class="token punctuation">:</span> .5rem<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h5>CSS</h5>
