@@ -23,9 +23,9 @@
         DEFAULT: theme(palette, primary, 5),
         dark: theme(palette, primary, 6, dark)
       ),
-      translate-x: (
-        DEFAULT: 0%,
-        dark: 100%
+      transform: (
+        DEFAULT: translateX(0%),
+        dark: translateX(100%)
       ),
       shadow-blur: theme(spacing, 3)
     )
@@ -39,10 +39,7 @@
   width: 100%;
   justify-content: space-between;
   user-select: none;
-
-  @include modes(mode, background) using ($color) {
-    background: $color;
-  }
+  @include modes(background, (mode, background));
 
   &:before {
     content: "";
@@ -52,14 +49,8 @@
     border-radius: 100px;
     box-shadow: 0 1px theme(mode, current, shadow-blur) rgba(black, .15);
     transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    @include modes(mode, current, background) using ($color) {
-      background: $color;
-    }
-
-    @include modes(mode, current, translate-x) using ($percentage) {
-      transform: translateX($percentage);
-    }
+    @include modes(background, (mode, current, background));
+    @include modes(transform, (mode, current, transform));
   }
 }
 .mode__light,
@@ -67,24 +58,14 @@
   display: block;
   position: relative;
   width: 100%;
-  padding: theme(mode, item, padding);
   cursor: pointer;
-
-  @include screens(mode, item, font-size) using ($size) {
-    font-size: $size;
-  }
-
-  @include modes(mode, item, color) using ($color) {
-    color: $color;
-  }
+  padding: theme(mode, item, padding);
+  @include screens(font-size, (mode, item, font-size));
+  @include modes(color, (mode, item, color));
 }
 .mode__light {
-  @include modes(mode, light, opacity) using ($opacity) {
-    opacity: $opacity;
-  }
+  @include modes(opacity, (mode, light, opacity));
 }
 .mode__dark {
-  @include modes(mode, dark, opacity) using ($opacity) {
-    opacity: $opacity;
-  }
+  @include modes(opacity, (mode, dark, opacity));
 }

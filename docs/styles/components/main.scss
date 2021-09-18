@@ -9,7 +9,5 @@
 ));
 
 .main {
-  @include screens(main, spacing) using ($value) {
-    padding: $value;
-  }
+  @include screens(padding, (main, spacing));
 }

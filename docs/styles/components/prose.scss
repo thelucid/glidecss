@@ -40,10 +40,7 @@
 .prose {
   h1, h2, h3, h4, h5 {
     font-weight: bold;
-
-    @include modes(palette, primary, 10) using ($color) {
-      color: $color;
-    }
+    @include modes(color, (palette, primary, 10));
   }
 
   h2, h3 {
@@ -59,10 +56,7 @@
     line-height: theme(font, leading, tight);
     margin-bottom: theme(spacing, 4);
     padding-bottom: theme(spacing, 3);
-
-    @include screens(font, size, 7) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 7));
 
     @include modes(palette, primary, 7) using ($color) {
       box-shadow: inset 0 -1px $color;
@@ -74,10 +68,7 @@
     margin-top: theme(spacing, 6);
     margin-bottom: theme(spacing, 6);
     padding-bottom: theme(spacing, 3);
-
-    @include screens(font, size, 6) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 6));
 
     @include modes(palette, primary, 7) using ($color) {
       box-shadow: inset 0 -1px $color;
@@ -88,36 +79,24 @@
     line-height: theme(font, leading, tight);
     margin-top: theme(spacing, 6);
     margin-bottom: theme(spacing, 4);
-
-    @include screens(font, size, 5) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 5));
   }
 
   h4 {
     margin-top: theme(spacing, 6);
     margin-bottom: theme(spacing, 4);
-
-    @include screens(font, size, 4) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 4));
   }
 
   h5 {
     margin-top: theme(spacing, 4);
     margin-bottom: theme(spacing, 3);
-
-    @include screens(font, size, 3) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 3));
   }
 
   p {
     margin-bottom: theme(spacing, 4);
-
-    @include screens(font, size, 3) using ($size) {
-      font-size: $size;
-    }
+    @include screens(font-size, (font, size, 3));
   }
 
   code, pre {
@@ -140,18 +119,9 @@
     border-radius: theme(radius);
   	white-space: normal;
     font-weight: theme(font, weight, medium);
-
-    @include screens(font, size, 2) using ($size) {
-      font-size: $size;
-    }
-
-    @include modes(prose, code, background) using ($color) {
-      background: $color;
-    }
-
-    @include modes(prose, code, foreground) using ($color) {
-      color: $color;
-    }
+    @include screens(font-size, (font, size, 2));
+    @include modes(background, (prose, code, background));
+    @include modes(foreground, (prose, code, foreground));
   }
 
   td code {
@@ -165,18 +135,9 @@
     padding: theme(spacing, 4);
     margin-bottom: theme(spacing, 4);
   	overflow-x: auto;
-
-    @include screens(font, size, 2) using ($size) {
-      font-size: $size;
-    }
-
-    @include modes(prose, pre, code, background) using ($color) {
-      background: $color;
-    }
-
-    @include modes(prose, pre, code, foreground) using ($color) {
-      color: $color;
-    }
+    @include screens(font-size, (font, size, 2));
+    @include modes(background, (prose, pre, code, background));
+    @include modes(color, (prose, pre, code, foreground));
   }
 
   table {
@@ -204,10 +165,7 @@
 
     th {
       font-weight: theme(font, weight, bold);
-
-      @include modes(prose, table, header, color) using ($color) {
-        color: $color;
-      }
+      @include modes(color, (prose, table, header, color));
     }
   }
 }

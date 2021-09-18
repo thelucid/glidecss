@@ -750,9 +750,7 @@ We can combine `variants` and `modifiers` to create responsive, and/or mode spec
 ```scss
 .box {
   @include variants(screen, mode) {
-    @include modifiers(spacing) using ($spacing) {
-      padding: $spacing;
-    }
+    @include modifiers(padding, (spacing));
   }
 }
 ```

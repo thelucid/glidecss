@@ -27,9 +27,7 @@
   }
 }
 .menu__nav {
-  @include screens(menu, spacing) using ($value) {
-    padding: $value;
-  }
+  @include screens(padding, (menu, spacing));
 
   @include screen(md) {
     position: sticky;
@@ -42,29 +40,20 @@
   }
 }
 .menu__list {
-  @include screens(menu, spacing) using ($value) {
-    margin-bottom: $value;
-  }
+  @include screens(margin-bottom, (menu, spacing));
 }
 .menu__link {
   display: block;
   font-size: theme(font, size, 2);
   padding: theme(spacing, 2);
-
-  @include modes(menu, link, normal, color) using ($color) {
-    color: $color;
-  }
+  @include modes(color, (menu, link, normal, color));
 
   &:hover {
-    @include modes(menu, link, hover, color) using ($color) {
-      color: $color;
-    }
+    @include modes(color, (menu, link, hover, color));
   }
 
   &.is-current {
-    @include modes(menu, link, current, color) using ($color) {
-      color: $color;
-    }
+    @include modes(color, (menu, link, current, color));
   }
 }
 .menu__link--h2 {
