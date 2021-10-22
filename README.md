@@ -272,9 +272,6 @@ It can be cumbersome to write out the longhand block for a single property, so t
 ##### SCSS
 
 ```scss
-##### SCSS
-
-```scss
 @include theme((
   menu: (
     padding: (
@@ -338,9 +335,6 @@ You can supply a map to `screens`, although property lookup is recommended.
 
 It can be cumbersome to write out the longhand block for a single property, so there is a shorthand that takes a property and an inline map:
 
-##### SCSS
-
-```scss
 ##### SCSS
 
 ```scss
